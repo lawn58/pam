@@ -4,11 +4,11 @@
 1.1 pam_time
 Создадим группы admin и myusers и добавим пользователей vasya, petya и kolya:
 
-# groupadd myusers
-# groupadd admin
-# useradd -g myusers vasya
-# useradd -g myusers petya
-# useradd -g admin kolya
+#groupadd myusers
+#groupadd admin
+#useradd -g myusers vasya
+#useradd -g myusers petya
+#useradd -g admin kolya
 Добавим правило в /etc/security/time.conf, запрещающее вход в выходные дни всем пользователям, кроме тех, кто принадлежит группе admin:
 
 sshd;*;!admin;!Wk0000-2400
@@ -38,6 +38,6 @@ Authentication failed.
 
 Для того чтобы дать пользователю право рестартить докер сервис, мы используем такую команду
 
-# echo "user ALL=/usr/bin/systemctl restart docker" >> /etc/sudoers
+#echo "user ALL=/usr/bin/systemctl restart docker" >> /etc/sudoers
 
 Эта команда позволяет пользователю user, выполнять команду systemctl с определенными опциями, в нашем случае - перезапускать докер сервис.
